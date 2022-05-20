@@ -22,6 +22,7 @@ jobs:
         - uses: actions/upload-artifact@v3
           with:
             name: win-art
+            path: art/wixxx.msi
   build2:
       runs-on: macos-latest
       steps:
@@ -37,6 +38,7 @@ jobs:
         - uses: actions/upload-artifact@v3
           with:
             name: dmg-art
+            path: art/wixxx.dmg
   build3:
       runs-on: ubuntu-latest 
       steps:
@@ -57,9 +59,11 @@ jobs:
         - uses: actions/upload-artifact@v3
           with:
             name: rpm-art
+            path: art/solvering.rpm
         - uses: actions/upload-artifact@v3
           with:
             name: deb-art
+            path: art/solvering.deb
         - name: Compile-2
           run: |
             cd solver_application
@@ -74,9 +78,11 @@ jobs:
         - uses: actions/upload-artifact@v3
           with:
             name: zip-art
+            path: art/just_code.zip 
         - uses: actions/upload-artifact@v3
           with:
             name: tar-art
+            path: art/just_code.tar.gz
   create-release:
       needs: [build1, build2, build3] 
       
