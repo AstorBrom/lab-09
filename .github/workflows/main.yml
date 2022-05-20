@@ -18,11 +18,10 @@ jobs:
             cmake --build . --config Release
             cpack -G WIX Release
         - name: move
-          run: mv D:/a/lab-06/lab-06/solver_application/wixxx.msi art
+          run: mv D:/a/lab-09/lab-09/solver_application/wixxx.msi art
         - uses: actions/upload-artifact@v3
           with:
             name: win-art
-            path: art/wixxx.msi
   build2:
       runs-on: macos-latest
       steps:
@@ -34,11 +33,10 @@ jobs:
             make
             cpack -G DragNDrop
         - name: move
-          run: mv /Users/runner/work/lab-06/lab-06/solver_application/wixxx.dmg art
+          run: mv /Users/runner/work/lab-09/lab-09/solver_application/wixxx.dmg art
         - uses: actions/upload-artifact@v3
           with:
             name: dmg-art
-            path: art/wixxx.dmg
   build3:
       runs-on: ubuntu-latest 
       steps:
@@ -54,16 +52,14 @@ jobs:
             cpack -G RPM
         - name: move
           run: |
-            mv /home/runner/work/lab-06/lab-06/solver_application/solvering.rpm art
-            mv /home/runner/work/lab-06/lab-06/solver_application/solvering.deb art
+            mv /home/runner/work/lab-09/lab-09/solver_application/solvering.rpm art
+            mv /home/runner/work/lab-09/lab-09/solver_application/solvering.deb art
         - uses: actions/upload-artifact@v3
           with:
             name: rpm-art
-            path: art/solvering.rpm
         - uses: actions/upload-artifact@v3
           with:
             name: deb-art
-            path: art/solvering.deb
         - name: Compile-2
           run: |
             cd solver_application
@@ -73,16 +69,14 @@ jobs:
             cpack -G TGZ
         - name: move1
           run: |
-            mv /home/runner/work/lab-06/lab-06/solver_application/just_code.zip art
-            mv /home/runner/work/lab-06/lab-06/solver_application/just_code.tar.gz art 
+            mv /home/runner/work/lab-09/lab-09/solver_application/just_code.zip art
+            mv /home/runner/work/lab-09/lab-09/solver_application/just_code.tar.gz art 
         - uses: actions/upload-artifact@v3
           with:
             name: zip-art
-            path: art/just_code.zip 
         - uses: actions/upload-artifact@v3
           with:
             name: tar-art
-            path: art/just_code.tar.gz
   create-release:
       needs: [build1, build2, build3] 
       
